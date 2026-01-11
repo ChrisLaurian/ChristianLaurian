@@ -5,6 +5,34 @@
     font-family: 'Segoe UI', sans-serif; 
 }
 
+.logo {
+    display: flex;
+    flex-direction: column; /* Apila el nombre y el título */
+    line-height: 1;
+}
+
+.logo .name {
+    font-size: 1.4rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.logo .title {
+    font-size: 0.7rem;
+    font-weight: 400;
+    color: #a29bfe; /* Color de acento */
+    margin-top: 4px;
+    letter-spacing: 1px;
+}
+
+/* Ajuste para que el nav no se vea muy alto */
+nav {
+    align-items: center;
+    padding: 15px 10%;
+}
+
 body { 
     transition: background-color 0.3s ease, color 0.3s ease;
     background-color: #f4f4f9; 
@@ -260,6 +288,76 @@ body.dark-mode .content p {
     color: #bbb; 
 }
 
+/* Estilo unificado para los enlaces de proyectos */
+.project-link {
+    text-decoration: none; /* Elimina el subrayado raro */
+    color: #6c5ce7; /* Mismo color de tu marca */
+    font-weight: bold;
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border: 2px solid #6c5ce7;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    margin-top: 15px;
+}
+
+.card-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: start;
+}
+
+/* Para que los iconos de los botones se vean bien */
+.project-link i {
+    font-size: 1rem;
+    margin-right: 5px;
+}
+
+/* Efecto Hover inspirado en la navegación */
+.project-link:hover {
+    background-color: #6c5ce7;
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Adaptación para Modo Oscuro */
+body.dark-mode .project-link {
+    color: #a29bfe;
+    border-color: #a29bfe;
+}
+
+body.dark-mode .project-link:hover {
+    background-color: #a29bfe;
+    color: #1a1a1a;
+}
+
+.contact-link {
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.contact-link:hover {
+    transform: translateY(-5px);
+    background: rgba(108, 92, 231, 0.1);
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.contact-link p {
+    font-size: 0.85rem;
+    color: #666;
+    margin-top: 5px;
+}
+
+body.dark-mode .contact-link p {
+    color: #bbb;
+}
 
 footer { 
     text-align: center; 

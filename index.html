@@ -4,13 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <title>Mi Portafolio | Nombre Apellido</title>
+    <title>Mi Portafolio | Christian Laurian</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
         <nav>
-            <div class="logo">MiPortafolio</div>
+            <div class="logo">
+        <span class="name">Christian Laurian</span>
+        <span class="title">Ingeniero en Sistemas</span>
+    </div>
             <ul>
                 <li><button id="theme-toggle">🌓 Modo</button></li>
                 <li><a href="#proyectos">Proyectos</a></li>
@@ -26,7 +29,7 @@
     </section>
 
     <section id="skills" class="skills">
-    <h2>Tecnologías y Experiencia</h2>
+    <h2>Tecnologías</h2>
     
     <div class="skills-group">
         <h3>Frontend & Mobile</h3>
@@ -39,14 +42,14 @@
     </div>
 
     <div class="skills-group">
-        <h3>Backend & APIs</h3>
-        <div class="skills-container">
-            <div class="skill-card"><i class="fab fa-php"></i><span>PHP</span></div>
-            <div class="skill-card"><i class="fas fa-code"></i><span>C# / .NET</span></div>
-            <div class="skill-card"><i class="fab fa-java"></i><span>Java</span></div>
-            <div class="skill-card"><i class="fas fa-plug"></i><span>REST APIs</span></div>
-        </div>
+    <h3>Backend & APIs</h3>
+    <div class="skills-container">
+        <div class="skill-card"><i class="fab fa-node-js"></i><span>Node.js</span></div>
+        <div class="skill-card"><i class="fas fa-server"></i><span>Express</span></div>
+        <div class="skill-card"><i class="fab fa-php"></i><span>PHP</span></div>
+        <div class="skill-card"><i class="fas fa-plug"></i><span>REST APIs</span></div>
     </div>
+</div>
 
     <div class="skills-group">
         <h3>Enterprise & Educación</h3>
@@ -57,21 +60,49 @@
     </div>
 </section>
 
-    <section id="proyectos" class="projects">
-        <h2>Mis Proyectos</h2>
-        <div class="grid">
-            <div class="card">
-                <h3>Proyecto 1</h3>
-                <p>Descripción breve de lo que hiciste y las tecnologías usadas.</p>
-                <a href="#">Ver Código</a>
+<section id="proyectos" class="projects">
+    <h2>Proyectos Destacados</h2>
+    <div class="grid">
+        
+        <div class="card">
+            <div class="card-icon"><i class="fas fa-qrcode"></i></div>
+            <h3>Generador de Códigos QR</h3>
+            <p>Utilería funcional para convertir enlaces dinámicos en códigos QR de forma instantánea. Ideal para herramientas de productividad rápida.</p>
+            <div class="tags">
+                <span>JavaScript</span>
+                <span>HTML5/CSS3</span>
+                <span>Productividad</span>
             </div>
-            <div class="card">
-                <h3>Proyecto 2</h3>
-                <p>Descripción breve de lo que hiciste y las tecnologías usadas.</p>
-                <a href="#">Ver Código</a>
+            <div class="card-links">
+                <a href="https://github.com/ChrisLaurian/generador-qr" class="project-link" target="_blank">
+                    <i class="fab fa-github"></i> Ver Código
+                </a>
             </div>
         </div>
-    </section>
+
+        <div class="card">
+            <div class="card-icon"><i class="fas fa-camera-retro"></i></div>
+            <h3>Sistema FotoStudio (Full-Stack)</h3>
+            <p>Aplicación web tipo blog con arquitectura desacoplada. Implementa operaciones CRUD completas para la gestión de contenidos y base de datos.</p>
+            <div class="tags">
+                <span>Frontend & Backend</span>
+                <span>CRUD Ops</span>
+                <span>Database</span>
+            </div>
+            <div class="card-links">
+                <a href="https://github.com/ChrisLaurian/fotoStudio" class="project-link" target="_blank">
+                    <i class="fas fa-desktop"></i> Frontend
+                </a>
+                <a href="https://github.com/ChrisLaurian/FotoEstudio-Backend" class="project-link" target="_blank">
+                    <i class="fas fa-server"></i> Backend
+                </a>
+            </div>
+        </div>
+
+        
+
+    </div>
+</section>
 
     <section id="certifications" class="certifications">
     <h2>Certificaciones y Formación</h2>
@@ -84,9 +115,16 @@
         </div>
 
         <div class="cert-card">
-            <i class="fab fa-udemy"></i>
+            <i class="fab fa-angular"></i>
             <h3>Master de Frameworks: Angular, React y Vue</h3>
             <p>Udemy | Diciembre 2023</p>
+        </div>
+
+        <div class="cert-card">
+    <i class="fab fa-node-js"></i>
+    <h3>Master en APIs RESTful con NodeJS</h3>
+    <p>Creación de 3 Backends Completos | Udemy</p>
+    <span class="badge">Node.js</span>
         </div>
 
         <div class="cert-card">
@@ -141,6 +179,31 @@
                     <li>Enseñanza de lógica de programación y mecánica de robots[cite: 19].</li>
                 </ul>
             </div>
+        </div>
+    </div>
+</section>
+
+<section id="contacto" class="skills">
+    <h2>¿Hablamos?</h2>
+    <p>Estoy disponible para proyectos de desarrollo Full-Stack, ServiceNow o consultoría educativa.</p>
+    
+    <div class="skills-container">
+        <a href="mailto:Laurian.Reyes@gmail.com" class="skill-card contact-link">
+            <i class="fas fa-envelope"></i>
+            <span>Email</span>
+            <p>Laurian.Reyes@gmail.com</p>
+        </a>
+
+        <a href="https://www.linkedin.com/in/christian-laurian/" target="_blank" class="skill-card contact-link">
+            <i class="fab fa-linkedin"></i>
+            <span>LinkedIn</span>
+            <p>Christian Alberto Laurian Reyes</p>
+        </a>
+
+        <div class="skill-card">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>Ubicación</span>
+            <p>Guadalajara, Jalisco, México</p>
         </div>
     </div>
 </section>
