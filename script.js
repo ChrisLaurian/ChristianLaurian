@@ -18,3 +18,17 @@ btn.addEventListener('click', () => {
 if (localStorage.getItem('theme') === 'dark') {
     document.body.classList.add('dark-mode');
 }
+
+const text = "Christian A. Laurian"
+const speed = 150;
+let i = 0;
+
+function typewriter() {
+    if (i < text.length) {
+        document.getElementById("typewriter").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typewriter, speed);
+    }
+}
+
+window.onload = typewriter;

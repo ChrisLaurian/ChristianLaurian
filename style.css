@@ -47,6 +47,22 @@ nav a {
     font-weight: bold; 
 }
 
+#theme-toggle {
+    background: none;
+    border: none;
+    color: white;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 0;
+    font-family: inherit; /* Hereda la fuente del body */
+    transition: color 0.3s ease;
+}
+
+#theme-toggle:hover {
+    color: #a29bfe; /* Un color suave al pasar el mouse */
+}
+
 .hero { 
     height: 60vh; 
     display: flex; 
