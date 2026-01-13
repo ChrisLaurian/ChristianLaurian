@@ -215,3 +215,85 @@ section { padding: 100px 10%; }
 .show { opacity: 1; filter: blur(0); transform: translateY(0); }
 
 footer { padding: 50px; text-align: center; color: var(--h-orange); }
+
+/* =========================================
+   REGLAS PARA MÓVILES (Media Queries)
+   ========================================= */
+@media (max-width: 768px) {
+    /* 1. Arreglo del Menú */
+    header {
+        width: 95%;
+        padding: 10px 15px;
+    }
+    
+    nav ul li {
+        margin-left: 10px; /* Reducimos espacio entre botones */
+    }
+
+    nav a {
+        font-size: 0.75rem; /* Letra más pequeña para que quepa */
+    }
+
+    /* 2. Proyectos Centrados */
+    .grid {
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Centrado total de las cartas */
+        gap: 25px;
+    }
+
+    .card {
+        width: 100%;
+        max-width: 350px; /* Evita que se estiren demasiado */
+        margin: 0 auto;
+    }
+
+    /* 3. Sección Hablamos (Tarjetas apretadas) */
+    .contact-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .contact-link {
+        width: 100%;
+        max-width: 320px;
+        min-height: auto; /* Dejamos que crezca según contenido */
+        padding: 20px;
+        overflow: hidden;
+    }
+
+    /* Cortar texto excesivo con puntos suspensivos (...) */
+    .contact-link p {
+        width: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis; 
+        display: block;
+        text-align: center;
+        font-size: 0.8rem;
+    }
+
+    /* Ajuste de títulos para móviles */
+    h2 {
+        font-size: 1.8rem;
+        margin-bottom: 30px;
+    }
+
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+}
+
+/* Ajuste Extra para Tarjetas de Habilidades en móvil */
+@media (max-width: 480px) {
+    .skills-container {
+        grid-template-columns: repeat(2, 1fr); /* 2 columnas en teléfonos pequeños */
+    }
+    
+    .skill-card {
+        height: 140px;
+        padding: 15px;
+    }
+}
