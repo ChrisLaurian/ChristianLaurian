@@ -1,368 +1,217 @@
+/* =========================================
+   1. VARIABLES Y RESET
+   ========================================= */
+:root {
+    --primary: #6c5ce7;
+    --primary-light: #a29bfe;
+    --bg-light: #f4f4f9;
+    --text-light: #333333;
+    /* Colores Místicos Halloween */
+    --h-orange: #ff781f;
+    --h-purple: #9d50bb;
+    --h-dark: #0a0a0a; /* Fondo oscuro base */
+    --h-card: rgba(20, 20, 20, 0.7);
+}
+
 * { 
-    margin: 0; 
-    padding: 0; 
-    box-sizing: border-box; 
-    font-family: 'Segoe UI', sans-serif; 
+    margin: 0; padding: 0; box-sizing: border-box; 
+    font-family: 'Plus Jakarta Sans', 'Segoe UI', sans-serif; 
 }
 
-.logo {
-    display: flex;
-    flex-direction: column; /* Apila el nombre y el título */
-    line-height: 1;
-}
+html { scroll-behavior: smooth; }
 
-.logo .name {
-    font-size: 1.4rem;
-    font-weight: 800;
-    letter-spacing: -1px;
-    color: #fff;
-    text-transform: uppercase;
-}
-
-.logo .title {
-    font-size: 0.7rem;
-    font-weight: 400;
-    color: #a29bfe; /* Color de acento */
-    margin-top: 4px;
-    letter-spacing: 1px;
-}
-
-/* Ajuste para que el nav no se vea muy alto */
-nav {
-    align-items: center;
-    padding: 15px 10%;
-}
-
+/* Fondo general con degradado oscuro por defecto para evitar destellos blancos */
 body { 
-    transition: background-color 0.3s ease, color 0.3s ease;
-    background-color: #f4f4f9; 
-    color: #333; 
+    background: linear-gradient(135deg, #1a1a1a 0%, #050505 100%);
+    color: #eeeeee;
+    transition: background 0.5s ease;
+    overflow-x: hidden;
     line-height: 1.6;
 }
 
+/* =========================================
+   2. MODO MÍSTICO (ANIMACIÓN DE FONDO)
+   ========================================= */
 body.dark-mode {
-    background-color: #1a1a1a;
-    color: #ffffff;
+    background: linear-gradient(-45deg, #050505, #2d134d, #b35900, #1a0a2e);
+    background-size: 400% 400%;
+    animation: mystic-gradient 12s ease infinite;
 }
 
-body.dark-mode .card {
-    background-color: #2d2d2d;
-    color: white;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.5);
+@keyframes mystic-gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
-body.dark-mode nav {
-    background-color: #000000;
+/* =========================================
+   3. NAVEGACIÓN (GLASSMORPHISM)
+   ========================================= */
+header {
+    position: fixed;
+    top: 20px; left: 50%; transform: translateX(-50%);
+    width: 90%; max-width: 1200px; z-index: 1000;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 10px 30px;
 }
 
-nav { 
-    display: flex; 
-    justify-content: space-between; 
-    padding: 20px 10%; 
-    background: #2d3436; 
-    color: white; 
-}
-nav ul { 
-    display: flex; 
-    list-style: none; 
-}
-nav ul li { 
-    margin-left: 20px; 
-}
-nav a { 
-    color: white; 
-    text-decoration: none; 
-    font-weight: bold; 
-    transition: color 0.3s ease;
-}
-
-nav a:hover {
-    color: #a29bfe;
-}
+nav { display: flex; justify-content: space-between; align-items: center; }
+nav ul { display: flex; list-style: none; align-items: center; }
+nav ul li { margin-left: 25px; }
+nav a { color: #fff; text-decoration: none; font-weight: 700; font-size: 0.9rem; transition: 0.3s; }
+nav a:hover { color: var(--h-orange); }
 
 #theme-toggle {
-    background: none;
-    border: none;
-    color: white;
-    font-weight: bold;
-    font-size: 1rem;
-    cursor: pointer;
-    padding: 0;
-    font-family: inherit; /* Hereda la fuente del body */
-    transition: color 0.3s ease;
+    background: rgba(255, 120, 31, 0.2);
+    border: 1px solid var(--h-orange);
+    color: #fff; padding: 6px 18px; border-radius: 50px;
+    cursor: pointer; font-weight: bold; transition: 0.3s;
 }
 
-#theme-toggle:hover {
-    color: #a29bfe; /* Un color suave al pasar el mouse */
+/* =========================================
+   4. ESTILO DE CARTAS UNIFICADO
+   ========================================= */
+.card, .skill-card, .cert-card, .timeline-item {
+    background: var(--h-card);
+    border-radius: 18px;
+    padding: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    color: #fff;
 }
 
-.hero { 
-    height: 60vh; 
-    display: flex; 
-    flex-direction: column; 
-    justify-content: center; 
-    align-items: center; 
-    text-align: center; 
-    background: linear-gradient(to right, #6c5ce7, #a29bfe); 
-    color: white; 
-}
-.hero h1 { 
-    font-size: 3rem; 
-    margin-bottom: 10px; 
-}
-.btn { 
-    margin-top: 20px; 
-    padding: 10px 25px; 
-    background: white; 
-    color: #6c5ce7; 
-    text-decoration: none; 
-    border-radius: 5px; 
-    font-weight: bold; 
+/* Hover general para todas las cartas */
+.card:hover, .skill-card:hover, .cert-card:hover, .timeline-item:hover {
+    border-color: var(--h-orange);
+    box-shadow: 0 0 25px rgba(255, 120, 31, 0.3);
+    transform: translateY(-10px);
 }
 
-.projects { 
-    padding: 50px 10%; 
+/* Títulos de secciones */
+h2 {
+    color: #fff;
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+    text-shadow: 0 0 15px rgba(255, 120, 31, 0.5);
 }
-.grid { 
+
+/* =========================================
+   5. TECNOLOGÍAS (TAMAÑO UNIFORME)
+   ========================================= */
+.skills-container { 
     display: grid; 
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); /* Fuerza el mismo tamaño */
     gap: 20px; 
-    margin-top: 20px; 
-}
-.card { 
-    background: white; 
-    padding: 20px; 
-    border-radius: 8px; 
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
-}
-
-.skills { padding: 50px 10%; text-align: center; }
-
-.skills-container {
-    display: flex;
-    flex-wrap: wrap;
     justify-content: center;
-    gap: 30px;
-    margin-top: 30px;
 }
 
 .skill-card {
     display: flex;
     flex-direction: column;
     align-items: center;
-    transition: transform 0.3s ease;
-}
-
-.skill-card i {
-    font-size: 3rem;
-    color: #6c5ce7; /* Color principal */
-    margin-bottom: 10px;
-}
-
-.skill-card:hover {
-    transform: translateY(-10px); /* Efecto de levitación */
-}
-
-/* Ajuste para modo oscuro */
-body.dark-mode .skill-card i {
-    color: #a29bfe;
-}
-
-.certifications { 
-    padding: 50px 10%; 
-    background-color: #f9f9ff; 
-}
-
-body.dark-mode .certifications { 
-    background-color: #1a1a1a; 
-}
-
-.cert-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-    margin-top: 30px;
-}
-
-.cert-card {
-    background: white;
-    padding: 25px;
-    border-radius: 12px;
+    justify-content: center;
+    height: 160px; /* Altura fija para uniformidad */
     text-align: center;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-    border-top: 4px solid #6c5ce7;
 }
 
-body.dark-mode .cert-card { 
-    background: #2d2d2d; 
-    color: white; 
-    border-top-color: #a29bfe; 
+.skills p{
+    margin-bottom: 2em;
 }
 
-/* Efecto especial para la certificación principal */
-.cert-card.gold {
-    border-top-color: #f1c40f;
-    position: relative;
-}
+.skill-card i { font-size: 3rem; margin-bottom: 15px; color: var(--h-orange); }
+.skill-card span { font-weight: 600; font-size: 0.9rem; }
 
-.cert-card i { 
-    font-size: 2.5rem; 
-    margin-bottom: 15px; 
-    color: #6c5ce7; 
-}
-
-.cert-card.gold i { 
-    color: #f1c40f; 
-}
-
-.badge {
-    display: inline-block;
-    background: #f1c40f;
-    color: black;
-    padding: 2px 10px;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: bold;
-    margin-top: 10px;
-}
-
-.experience { padding: 50px 10%; }
-
+/* =========================================
+   6. EXPERIENCIA (SEPARACIÓN DE CARTAS)
+   ========================================= */
 .timeline {
-    position: relative;
-    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px; /* Separación entre cartas de experiencia */
+    max-width: 900px;
     margin: 0 auto;
-    border-left: 3px solid #6c5ce7;
-    padding-left: 30px;
+    border-left: 2px solid var(--h-orange);
+    padding-left: 20px;
 }
 
 .timeline-item {
     position: relative;
-    margin-bottom: 40px;
+    text-align: left; /* Alineación natural para lectura */
 }
 
-/* El círculo de la línea de tiempo */
-.timeline-item::before {
-    content: '';
-    position: absolute;
-    left: -41.5px;
-    top: 5px;
-    width: 20px;
-    height: 20px;
-    background: #6c5ce7;
-    border-radius: 50%;
-    border: 3px solid white;
-}
+.timeline-item h3 { color: var(--h-orange); margin-bottom: 10px; }
+.timeline-item .time { font-weight: bold; color: var(--primary-light); margin-bottom: 5px; }
 
-body.dark-mode .timeline-item::before { 
-    border-color: #1a1a1a; 
-    background: #a29bfe; 
-}
-
-.time {
-    font-weight: bold;
-    color: #6c5ce7;
-    margin-bottom: 5px;
-}
-
-.content h3 { 
-    margin-bottom: 5px; 
-}
-
-.content p { 
-    font-style: italic; 
-    color: #666; 
-    margin-bottom: 10px; 
-}
-
-.content ul { 
-    padding-left: 20px; 
-    font-size: 0.95rem; 
-}
-
-body.dark-mode .time { 
-    color: #a29bfe; 
-}
-
-body.dark-mode .content p { 
-    color: #bbb; 
-}
-
-/* Estilo unificado para los enlaces de proyectos */
-.project-link {
-    text-decoration: none; /* Elimina el subrayado raro */
-    color: #6c5ce7; /* Mismo color de tu marca */
-    font-weight: bold;
-    font-size: 0.9rem;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 8px 16px;
-    border: 2px solid #6c5ce7;
-    border-radius: 20px;
-    transition: all 0.3s ease;
-    margin-top: 15px;
-}
-
-.card-links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: start;
-}
-
-/* Para que los iconos de los botones se vean bien */
-.project-link i {
-    font-size: 1rem;
-    margin-right: 5px;
-}
-
-/* Efecto Hover inspirado en la navegación */
-.project-link:hover {
-    background-color: #6c5ce7;
-    color: white;
-    transform: translateY(-2px);
-}
-
-/* Adaptación para Modo Oscuro */
-body.dark-mode .project-link {
-    color: #a29bfe;
-    border-color: #a29bfe;
-}
-
-body.dark-mode .project-link:hover {
-    background-color: #a29bfe;
-    color: #1a1a1a;
+/* =========================================
+   7. SECCIÓN HABLAMOS (CONTACTO)
+   ========================================= */
+.contact-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
 }
 
 .contact-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 200px;
     text-decoration: none;
-    color: inherit;
-    transition: all 0.3s ease;
-    cursor: pointer;
+    overflow: hidden; /* Evita que el contenido se salga en hover */
 }
 
-.contact-link:hover {
-    transform: translateY(-5px);
-    background: rgba(108, 92, 231, 0.1);
-    border-radius: 10px;
-    padding: 10px;
+.contact-link i { font-size: 2.5rem; color: var(--h-orange); margin-bottom: 15px; }
+.contact-link span { font-size: 1.2rem; font-weight: bold; color: #fff; margin-bottom: 5px; }
+.contact-link p { font-size: 0.9rem; opacity: 0.9; color: var(--primary-light); }
+
+/* =========================================
+   8. HERO, PROYECTOS Y TAGS
+   ========================================= */
+section { padding: 100px 10%; }
+
+.hero { 
+    height: 100vh; display: flex; flex-direction: column; 
+    justify-content: center; align-items: center; text-align: center;
 }
 
-.contact-link p {
-    font-size: 0.85rem;
-    color: #666;
-    margin-top: 5px;
+.btn {
+    padding: 15px 35px; background: var(--h-orange); color: #000;
+    border-radius: 50px; text-decoration: none; font-weight: 800;
+    transition: 0.3s ease; margin-top: 30px;
 }
 
-body.dark-mode .contact-link p {
-    color: #bbb;
+.btn:hover { transform: scale(1.1); box-shadow: 0 0 20px var(--h-orange); }
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
 }
 
-footer { 
-    text-align: center; 
-    padding: 20px; 
-    background: #2d3436; 
-    color: white; 
-    margin-top: 40px; 
+.tags span {
+    background: rgba(157, 80, 187, 0.2);
+    color: var(--primary-light);
+    padding: 5px 12px; border-radius: 50px;
+    font-size: 0.7rem; font-weight: bold; margin: 5px 5px 0 0;
+    display: inline-block; border: 1px solid var(--h-purple);
 }
+
+.project-link {
+    color: var(--h-orange); font-weight: bold; text-decoration: none;
+    margin-top: 20px; display: inline-block;
+}
+
+/* =========================================
+   9. ANIMACIONES DE SCROLL (JS)
+   ========================================= */
+.hidden-fade { opacity: 0; filter: blur(10px); transform: translateY(40px); transition: all 1s ease; }
+.show { opacity: 1; filter: blur(0); transform: translateY(0); }
+
+footer { padding: 50px; text-align: center; color: var(--h-orange); }
